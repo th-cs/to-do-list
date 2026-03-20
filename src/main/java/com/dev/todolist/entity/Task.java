@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "tb_tasks")
@@ -40,5 +41,6 @@ public class Task {
 	@JoinColumn(
 	name = "user_id",
 	nullable = false)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private User user;
 }
