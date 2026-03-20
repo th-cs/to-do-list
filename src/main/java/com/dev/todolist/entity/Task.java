@@ -34,7 +34,7 @@ public class Task {
 	private String description;
 
 	@Column(name = "is_done", nullable = false)
-	private boolean isDone = false;
+	private boolean isDone;
 
 	@ManyToOne
 	@JoinColumn(
