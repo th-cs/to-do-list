@@ -32,12 +32,13 @@ public class UserService {
 	}
 
 	public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
-		return userMapper.toDTO(
-			userRepository.save(userMapper.toEntity(userRequestDTO)));
+		User user = userMapper.toEntity(userRequestDTO);
+		userRepository.save(user);
+		return userMapper.toDTO(user);
 	}
 
 	public UserResponseDTO updateUser(Long userId,
-		UserRequestDTO userRequestDTO) {
+	UserRequestDTO userRequestDTO) {
 		User user = userRepository.getReferenceById(userId);
 			user.setName(userRequestDTO.name());
 			user.setEmail(userRequestDTO.email());
@@ -53,4 +54,5 @@ public class UserService {
 		}
 		return false;
 	}
+
 }
