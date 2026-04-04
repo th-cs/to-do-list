@@ -47,7 +47,8 @@ public class UserController {
 	}
 
 	@GetMapping("/{userId}/tasks")
-	public ResponseEntity<List<TaskDTO>> listTasksByUser(@PathVariable Long userId) {
+	public ResponseEntity<List<TaskDTO>> listTasksByUser(
+	@PathVariable Long userId) {
 		try {
 			return ResponseEntity.ok(taskService.listTasksByUser(userId));
 		} catch (EntityNotFoundException exception) {
@@ -57,16 +58,18 @@ public class UserController {
 
 	@PostMapping
 	public ResponseEntity<?> createUser(
-		@RequestBody @Valid UserRequestDTO userRequestDTO) {
-		return ResponseEntity.status(HttpStatus.CREATED)
+	@RequestBody @Valid UserRequestDTO userRequestDTO) {
+		return ResponseEntity
+			.status(HttpStatus.CREATED)
 			.body(userService.createUser(userRequestDTO));
 	}
 
 	@PostMapping("/{userId}/tasks")
 	public ResponseEntity<?> createTask(@PathVariable Long userId,
-		@RequestBody @Valid TaskDTO taskDTO) {
+	@RequestBody @Valid TaskDTO taskDTO) {
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED)
+			return ResponseEntity
+				.status(HttpStatus.CREATED)
 				.body(taskService.createTask(userId, taskDTO));
 		} catch (DataIntegrityViolationException exception) {
 			return ResponseEntity.internalServerError().build();
@@ -75,7 +78,7 @@ public class UserController {
 
 	@PutMapping("/{userId}")
 	public ResponseEntity<?> updateUser(@PathVariable Long userId,
-		@RequestBody @Valid UserRequestDTO userRequestDTO) {
+	@RequestBody @Valid UserRequestDTO userRequestDTO) {
 		try {
 			return ResponseEntity.ok()
 				.body(userService.updateUser(userId, userRequestDTO));
@@ -91,4 +94,5 @@ public class UserController {
 		}
 		return ResponseEntity.internalServerError().build();
 	}
+
 }
