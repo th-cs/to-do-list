@@ -138,6 +138,13 @@
 
 ## Screenshots
 
+- User with many tasks
+
+![Screenshot of a GET request listing a user and her tasks](/images/Screenshot_01.png)
+
+- Attempting to create a task with no associated user
+
+![Screenshot of an attempt to create a task without an existing user](/images/Screenshot_02.png)
 
 ## 1:N Relationship
 
