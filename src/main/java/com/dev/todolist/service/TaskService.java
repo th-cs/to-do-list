@@ -42,11 +42,7 @@ public class TaskService {
 	}
 
 	public TaskDTO createTask(Long userId, TaskDTO taskDTO) {
-		Task task = new Task();
-
-		task.setTitle(taskDTO.title());
-		task.setDescription(taskDTO.description());
-		task.setDone(taskDTO.isDone());
+		Task task = taskMapper.toEntity(taskDTO);
 		task.setUser(userRepository.getReferenceById(userId));
 		taskRepository.save(task);
 
